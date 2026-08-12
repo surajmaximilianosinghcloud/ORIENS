@@ -81,8 +81,7 @@ img{ max-width:100%; display:block; }
   display:flex; flex-wrap: wrap; row-gap: 10px;
   align-items:center; justify-content:space-between;
   padding: 18px 24px;
-  background: rgba(10,8,6,0.85);
-  backdrop-filter: blur(10px);
+  background: rgba(9,7,5,0.97);
   border-bottom: 1px solid rgba(201,162,75,0.15);
 }
 .nav-logo{
