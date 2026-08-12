@@ -138,8 +138,11 @@ img{ max-width:100%; display:block; }
     background: var(--black);
     flex-direction:column;
     align-items:center;
-    justify-content:center;
-    gap:34px;
+    justify-content:flex-start;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    padding: 60px 20px 40px;
+    gap:30px;
     font-size:17px;
     transform: translateY(-110%);
     transition: transform .4s ease;
