@@ -78,9 +78,10 @@ img{ max-width:100%; display:block; }
 /* ---------- Nav ---------- */
 .nav{
   position:sticky; top:0; z-index:50;
-  display:flex; align-items:center; justify-content:space-between;
-  padding: 22px 40px;
-  background: rgba(10,8,6,0.72);
+  display:flex; flex-wrap: wrap; row-gap: 10px;
+  align-items:center; justify-content:space-between;
+  padding: 18px 24px;
+  background: rgba(10,8,6,0.85);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(201,162,75,0.15);
 }
@@ -88,21 +89,25 @@ img{ max-width:100%; display:block; }
   display:flex; align-items:center; gap:10px;
   font-family:'Cormorant Garamond', serif;
   font-weight:600;
-  font-size:22px;
-  letter-spacing:5px;
+  font-size:20px;
+  letter-spacing:4px;
   color: var(--champagne);
+  flex-shrink:0;
 }
-.nav-logo img{ width:30px; }
+.nav-logo img{ width:28px; flex-shrink:0; }
 .nav-links{
-  display:flex; gap:36px;
+  display:flex; gap:30px;
   font-size:13px;
-  letter-spacing:2.5px;
+  letter-spacing:2.2px;
   text-transform:uppercase;
+  flex-wrap:wrap;
 }
 .nav-links a{
   color: var(--champagne-dim);
   position:relative;
   padding-bottom:4px;
+  white-space:nowrap;
+  margin: 0 15px;
   transition: color .3s ease;
 }
 .nav-links a:hover, .nav-links a.active{ color: var(--gold-2); }
@@ -112,34 +117,61 @@ img{ max-width:100%; display:block; }
 .nav-cta{
   display:flex; align-items:center; gap:8px;
   border:1px solid var(--gold-3);
-  padding:9px 18px;
+  padding:9px 16px;
   font-size:12px;
-  letter-spacing:2px;
+  letter-spacing:1.5px;
   text-transform:uppercase;
+  white-space:nowrap;
+  flex-shrink:0;
   transition: all .3s ease;
 }
 .nav-cta:hover{ border-color: var(--gold-1); background:rgba(201,162,75,0.1); }
-.nav-cta svg{ width:14px; height:14px; stroke:var(--gold-2); }
+.nav-cta svg{ width:14px; height:14px; stroke:var(--gold-2); flex-shrink:0; }
 
-.nav-toggle{ display:none; background:none; border:none; cursor:pointer; }
-.nav-toggle svg{ width:26px; height:26px; stroke:var(--champagne); }
+.nav-toggle{ display:none; background:none; border:none; cursor:pointer; flex-shrink:0; }
+.nav-toggle svg{ width:24px; height:24px; stroke:var(--champagne); }
 
-@media (max-width: 860px){
+/* Below this width: collapse links into a hamburger menu so nothing
+   has to squeeze into one row and risk overlapping. */
+@media (max-width: 1000px){
   .nav-links{
-    position:fixed; inset:70px 0 0 0;
+    position:fixed; inset:64px 0 0 0;
     background: var(--black);
     flex-direction:column;
     align-items:center;
     justify-content:center;
     gap:34px;
-    font-size:16px;
+    font-size:17px;
     transform: translateY(-110%);
     transition: transform .4s ease;
     z-index:40;
   }
   .nav-links.open{ transform: translateY(0); }
   .nav-toggle{ display:block; }
-  .nav-cta span{ display:none; }
+}
+
+/* Below this width: drop the WhatsApp pill from the bar itself (it's
+   always reachable via the menu + every section CTA) so the header
+   never has more than logo + hamburger fighting for space. */
+@media (max-width: 480px){
+  .nav{ padding:14px 16px; }
+  .nav-logo{ font-size:17px; letter-spacing:2.5px; }
+  .nav-logo img{ width:24px; }
+  .nav-cta{ display:none; }
+}
+
+.nav-wa-mobile{ display:none; }
+@media (max-width: 1000px){
+  .nav-wa-mobile{
+    display:inline-flex; align-items:center; gap:8px;
+    border:1px solid var(--gold-3);
+    padding:14px 28px;
+    margin-top:6px;
+    font-size:14px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color: var(--gold-2);
+  }
 }
 
 /* ---------- Buttons ---------- */
